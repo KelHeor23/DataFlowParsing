@@ -1,9 +1,0 @@
-# ninja log v5
-6	231	7427501666400144	CMakeFiles/ParsingTheDataStream.dir/Receiver/callback.cpp.obj	14bbe47633643530
-0	290	7427501666992796	CMakeFiles/ParsingTheDataStream.dir/main.cpp.obj	e9e009d5f154db18
-11	593	7427501670028281	CMakeFiles/ParsingTheDataStream.dir/Tests/callback_test.cpp.obj	dd263b1cd4bdb388
-14	636	7427501670447423	CMakeFiles/ParsingTheDataStream.dir/Receiver/bin_packet_receiver.cpp.obj	8c1f3566ece14ef6
-17	637	7427501670467415	CMakeFiles/ParsingTheDataStream.dir/Receiver/text_packet_receiver.cpp.obj	933bdfe514dcc2a0
-3	719	7427501671273847	CMakeFiles/ParsingTheDataStream.dir/Receiver/receiver.cpp.obj	409ecf78c5f49655
-9	782	7427501671898627	CMakeFiles/ParsingTheDataStream.dir/Tests/tests.cpp.obj	287b2af44114846e
-783	965	7427501673710893	ParsingTheDataStream.exe	c17bdd2d72d4e6c6
