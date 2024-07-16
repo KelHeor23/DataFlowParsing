@@ -2,6 +2,7 @@
 
 #include "../Common/common_functions.h"
 #include "data_markers.h"
+#include <algorithm>
 #include <cstring>
 
 TextPacketReceiver::TextPacketReceiver(std::shared_ptr<Callback> c)
@@ -18,9 +19,9 @@ void TextPacketReceiver::receivePacket(const char *data, std::size_t size)
         return;
 
     if (buffer.empty())
-        firstReadingAttemptTextPacket(data);
+        firstReadingAttemptTextPacket(data, size);
     else
-        otherReadingAttemptTextPacket(data);
+        otherReadingAttemptTextPacket(data, size);
 }
 
 void TextPacketReceiver::sendPacket(const char *data, std::size_t size)
@@ -29,9 +30,9 @@ void TextPacketReceiver::sendPacket(const char *data, std::size_t size)
     buffer.clear();
 }
 
-void TextPacketReceiver::firstReadingAttemptTextPacket(const char *data)
+void TextPacketReceiver::firstReadingAttemptTextPacket(const char *data, std::size_t size)
 {
-    char* found = strstr(data, END_TEXT_PACKET);
+    const char* found = std::search(data, data + size, END_TEXT_PACKET);
     int   packetSize = 0;
 
     // Если пакет уместился целиком в блок
@@ -48,7 +49,7 @@ void TextPacketReceiver::firstReadingAttemptTextPacket(const char *data)
     }
 }
 
-void TextPacketReceiver::otherReadingAttemptTextPacket(const char *data)
+void TextPacketReceiver::otherReadingAttemptTextPacket(const char *data, std::size_t size)
 {
     if (checkEndMark(data))
     {
@@ -58,7 +59,7 @@ void TextPacketReceiver::otherReadingAttemptTextPacket(const char *data)
     }
     else if (byteProcessed < blockSize)
     {
-        char* found = strstr(data, END_TEXT_PACKET);
+        const char* found = std::search(data, data + size, END_TEXT_PACKET);
         int   packetSize = 0;
 
         // Если остаток пакета уместился в блок

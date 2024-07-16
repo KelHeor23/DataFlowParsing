@@ -18,8 +18,8 @@ public:
 
 private:
     void sendPacket(const char* data, std::size_t size);    // Функция отправки текстового пакета
-    void firstReadingAttemptTextPacket(const char* data);   // Функция первой обработки бинарного пакета
-    void otherReadingAttemptTextPacket(const char* data);   // Функция вторичной обработки бинарного пакета
+    void firstReadingAttemptTextPacket(const char* data, std::size_t size);   // Функция первой обработки бинарного пакета
+    void otherReadingAttemptTextPacket(const char* data, std::size_t size);   // Функция вторичной обработки бинарного пакета
     bool checkEndMark(const char* data);                    // Проверка, на обрезанный признак конца строки
 
 private:
